@@ -1,0 +1,68 @@
+$colorPrimary: #D33A21;
+$transitionTF: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+.Input {
+	position: relative;
+	height: 55px;
+	margin-bottom: 25px;
+
+	.input {
+		display: block;
+		margin: 0;
+		padding: 0.8rem;
+		color: inherit;
+		width: 100%;
+		font-family: inherit;
+		font-size: 1rem;
+		font-weight: inherit;
+		border: none;
+		border-radius: 9px;
+		transition: box-shadow 300ms;
+
+		&::placeholder {
+			color: #B0BEC5;
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: 0.2rem 0.8rem 1.6rem $colorPrimary;
+		}
+
+		&:placeholder-shown + .Input-label {
+			visibility: hidden;
+			z-index: -1;
+		}
+
+		&:not(:placeholder-shown) + .Input-label,
+		&:focus:not(:placeholder-shown) + .Input-label {
+			visibility: visible;
+			z-index: 1;
+			opacity: 1;
+			transform:
+				translate3d(0, -50px, 0)
+				scale(0.6);
+			transition:
+				transform 300ms,
+				visibility 0ms,
+				z-index 0ms;
+		}
+	}
+
+	.Input-label {
+		display: block;
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		color: #000000;
+		font-family: inherit;
+		font-size: 1.5rem;
+		font-weight: inherit;
+		opacity: 0;
+		transform-origin: 0 0;
+		transition:
+			opacity 300ms $transitionTF,
+			transform 300ms $transitionTF,
+			visibility 0ms 300ms $transitionTF,
+			z-index 0ms 300ms $transitionTF;
+	}
+}
