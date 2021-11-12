@@ -2,12 +2,11 @@ import productos from "../../assets/productos";
 
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 
-export default function ProductsReducer(state = { auth: false }, action) {
+export default function ProductsReducer(state = { products: [...productos] }, action) {
 	switch(action.type) {
 		case GET_PRODUCTS:
 			return {
-				...state,
-				products: [...productos]
+				...state
 			};
 		default:
 			return state;

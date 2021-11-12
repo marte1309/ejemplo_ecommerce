@@ -7,6 +7,9 @@ import Product from '../pages/Product';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 function Routes(props) {
 
 	useEffect(() => {
@@ -14,20 +17,24 @@ function Routes(props) {
 	}, [props])
 
 	return (
-		<Switch>
-			<Route path="/" exact>
-				<Home/>
-			</Route>
-			<Route path="/product/:id" exact>
-				<Home/>
-			</Route>
-			<Route path="/cart" exact>
-				<Home/>
-			</Route>
-			<Route path="/checkout" exact>
-				<Home/>
-			</Route>
-		</Switch>
+		<>
+			<Header/>
+				<Switch>
+					<Route path="/" exact>
+						<Home/>
+					</Route>
+					<Route path="/product/:id" exact>
+						<Home/>
+					</Route>
+					<Route path="/cart" exact>
+						<Home/>
+					</Route>
+					<Route path="/checkout" exact>
+						<Home/>
+					</Route>
+				</Switch>
+			<Footer/>
+		</>
 	)
 }
 
