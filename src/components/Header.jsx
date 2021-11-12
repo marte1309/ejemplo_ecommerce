@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Carticon } from '../assets';
 
@@ -12,10 +13,17 @@ const Header = (props) => {
 			<div className="cart-icon">
 				<Link to="/cart">
 					<img src={Carticon} alt="carticon"/>
+					{props.cart.length > 0 && <span className="badge">{props.cart.length}</span>}
 				</Link>
 			</div>
 		</header>
 	)
 }
 
-export default Header;
+const MapStateToProps = (state) => {
+	return {
+		...state.Cart
+	}
+}
+
+export default connect(MapStateToProps)(Header);

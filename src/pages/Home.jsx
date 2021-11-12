@@ -1,6 +1,11 @@
+import { useCallback } from 'react';
 import { connect } from 'react-redux';
 
 const Home = (props) => {
+	const addProduct = useCallback((product) => {
+		props.addproduct(product);
+	}, [props])
+
 	return (
 		<div className="home">
 			<div className="title">
@@ -19,7 +24,7 @@ const Home = (props) => {
 						<div className="product-price">
 							<h4>$ {parseFloat(product.precio).toFixed(2)}</h4>
 						</div>
-						<button>Agregar</button>
+						<button onClick={() => addProduct(product)}>Agregar</button>
 					</div>
 				)}
 			</div>
@@ -27,10 +32,16 @@ const Home = (props) => {
 	)
 }
 
-const MapStateToProps = (state) => {
+const mapStateToProps = (state) => {
 	return {
 		...state.Products
 	}
 }
 
-export default connect(MapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addproduct: (value) => dispatch({type: "CART_ADD", value})
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
