@@ -19,20 +19,22 @@ function Routes(props) {
 	return (
 		<>
 			<Header/>
-				<Switch>
-					<Route path="/" exact>
-						<Home/>
-					</Route>
-					<Route path="/product/:id" exact>
-						<Home/>
-					</Route>
-					<Route path="/cart" exact>
-						<Home/>
-					</Route>
-					<Route path="/checkout" exact>
-						<Home/>
-					</Route>
-				</Switch>
+				<div className="body-content">
+					<Switch>
+						<Route path="/" exact>
+							<Home/>
+						</Route>
+						<Route path="/product/:id" exact>
+							<Product/>
+						</Route>
+						<Route path="/cart" exact>
+							<Cart/>
+						</Route>
+						<Route path="/checkout" exact>
+							<Checkout/>
+						</Route>
+					</Switch>
+				</div>
 			<Footer/>
 		</>
 	)
