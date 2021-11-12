@@ -1,8 +1,12 @@
 import { useCallback } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Home = (props) => {
-	const addProduct = useCallback((product) => {
+	const addProduct = useCallback((product, event) => {
+		event.stopPropagation();
+		event.preventDefault();
+
 		props.addproduct(product);
 	}, [props])
 
@@ -14,7 +18,7 @@ const Home = (props) => {
 
 			<div className="product-container">
 				{props.products.map(product =>
-					<div key={product.id} className="product-card">
+					<Link key={product.id} to={`/product/${product.id}`} className="product-card">
 						<div className="product-card-image">
 							<img src={product.imagen} alt={`product-${product.id}`}/>
 						</div>
@@ -24,8 +28,8 @@ const Home = (props) => {
 						<div className="product-price">
 							<h4>$ {parseFloat(product.precio).toFixed(2)}</h4>
 						</div>
-						<button onClick={() => addProduct(product)}>Agregar</button>
-					</div>
+						<button onClick={(event) => addProduct(product, event)}>Agregar</button>
+					</Link>
 				)}
 			</div>
 		</div>
