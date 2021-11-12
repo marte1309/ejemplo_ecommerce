@@ -22,13 +22,19 @@ const Home = (props) => {
 						<div className="product-card-image">
 							<img src={product.imagen} alt={`product-${product.id}`}/>
 						</div>
-						<div className="product-name">
-							<h1>{product.nombre}</h1>
+						<div className="details">
+							<div className="left">
+								<div className="product-name">
+									<h1>{product.nombre}</h1>
+								</div>
+								<div className="product-price">
+									<h4>$ {parseFloat(product.precio).toFixed(2)}</h4>
+								</div>
+							</div>
+							<div className="right">
+								<button onClick={(event) => addProduct(product, event)}>Agregar</button>
+							</div>
 						</div>
-						<div className="product-price">
-							<h4>$ {parseFloat(product.precio).toFixed(2)}</h4>
-						</div>
-						<button onClick={(event) => addProduct(product, event)}>Agregar</button>
 					</Link>
 				)}
 			</div>
