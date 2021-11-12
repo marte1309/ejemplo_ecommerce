@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 const Home = (props) => {
 	return (
 		<div className="home">
-			<h1>Ejemplo Ecommerce React + Redux</h1>
+			<div className="title">
+				<h1>Ejemplo Ecommerce React + Redux</h1>
+			</div>
+
 			<div className="product-container">
 				{props.products.map(product =>
 					<div key={product.id} className="product-card">
